@@ -7,7 +7,7 @@ CREATE TABLE nation(
 	n_comment varchar(152)
 );
 
-INSERT INTO `nation` VALUES ('9','repudiandae','2','Dicta nihil provident sint natus facere voluptate dolore nihil.'),
+INSERT INTO nation VALUES ('9','repudiandae','2','Dicta nihil provident sint natus facere voluptate dolore nihil.'),
 ('7','qui','9','Explicabo laborum facere sequi.'),
 ('5','alias','5','Quas a asperiores deleniti quis.'),
 ('6','reprehenderit','6','Sequi reprehenderit aut accusamus sed consectetur beatae mollitia.'),
@@ -114,7 +114,7 @@ CREATE TABLE region(
 	r_comment varchar(152)
 );
 
-INSERT INTO `region` VALUES ('9','saepe','Brooklyn'),
+INSERT INTO region VALUES ('9','saepe','Brooklyn'),
 ('6','praesentium','Cecile'),
 ('7','consequatur','Colin'),
 ('9','enim','Prudence'),
@@ -137,7 +137,7 @@ CREATE TABLE part(
 	p_comment varchar(23) not null
 );
 
-INSERT INTO `part` VALUES ('5','veritatis','Praesentium qui qui facer','adipisci','facere','99','1366 Horte','9999.99','corporis'),
+INSERT INTO part VALUES ('5','veritatis','Praesentium qui qui facer','adipisci','facere','99','1366 Horte','9999.99','corporis'),
 ('6','facere','Sequi aliquid qui eos eum','pariatur','architecto','99','824 Medhur','52.19','hic'),
 ('7','a','Aut incidunt nobis dignis','quae','ipsa','99','66998 Ambr','59.77','dolores'),
 ('2','veritatis','Similique quia magni qui','et','rerum','99','269 Elton','9999.99','fugit'),
@@ -158,7 +158,7 @@ CREATE TABLE supplier (
 	s_comment varchar(101) not null
 );
 
-INSERT INTO `supplier` VALUES ('0','id','iste','1','(034)443-6942x1','3.00','Iste enim ut dolor unde non corporis.'),
+INSERT INTO supplier VALUES ('0','id','iste','1','(034)443-6942x1','3.00','Iste enim ut dolor unde non corporis.'),
 ('6','quibusdam','quasi','3','1-656-323-1321','9.00','Magni a sapiente et libero maxime.'),
 ('0','ipsum','ab','7','1-021-218-7488','7.00','Occaecati veniam reiciendis velit sapiente.'),
 ('9','inventore','iure','6','(802)920-9553x1','5.00','Et hic hic reprehenderit at vitae.'),
@@ -177,7 +177,7 @@ CREATE TABLE partsupp(
 	ps_comment varchar(199) not null
 );
 
-INSERT INTO `partsupp` VALUES ('2','4','9065','13.30','Aliquid et maiores nemo iste.'),
+INSERT INTO partsupp VALUES ('2','4','9065','13.30','Aliquid et maiores nemo iste.'),
 ('9','7','21530','9999.99','At et aut cumque explicabo enim nostrum.'),
 ('0','0','1745','30.41','Inventore quod enim voluptatum id eum necessitatibus voluptates a.'),
 ('9','7','99999','9999.99','Voluptates dolor mollitia eos quia praesentium.'),
@@ -199,7 +199,7 @@ CREATE TABLE customer(
 	c_comment varchar(117) not null
 );
 
-INSERT INTO `customer` VALUES ('2','aut','Apt. 486','2','(745)205-6670x1','3.00','quam','natus'),
+INSERT INTO customer VALUES ('2','aut','Apt. 486','2','(745)205-6670x1','3.00','quam','natus'),
 ('3','doloribus','Suite 840','0','1-905-463-1987x','0.00','delectus','corrupti'),
 ('0','et','Suite 818','9','020-994-5561','3.00','animi','vitae'),
 ('6','excepturi','Suite 685','1','672-565-0131','1.00','perspiciat','ut'),
@@ -222,7 +222,7 @@ CREATE TABLE orders(
 	o_comment varchar(79) not null
 );
 
-INSERT INTO `orders` VALUES ('0','5','U','0.00','1970-11-04','Ms.','Cole, Padberg a','9','Prof.'),
+INSERT INTO orders VALUES ('0','5','U','0.00','1970-11-04','Ms.','Cole, Padberg a','9','Prof.'),
 ('27860','7','A','2.66','1980-08-21','Mr.','Cruickshank, La','8','Prof.'),
 ('4148','4','L','1013.48','2011-07-06','Mr.','Gaylord, Rogahn','4','Dr.'),
 ('28437','9','D','8.70','1975-06-27','Prof.','Reynolds Ltd','1','Ms.'),
@@ -252,7 +252,7 @@ CREATE TABLE lineitem(
 	l_comment varchar(44) not null
 );
 
-INSERT INTO `lineitem` VALUES ('9','7','7','9','99','999999.99','9.99','7.00','v','C','1991-02-15','2001-03-26','2006-06-23','Genoveva Dooley','South','SD'),
+INSERT INTO lineitem VALUES ('9','7','7','9','99','999999.99','9.99','7.00','v','C','1991-02-15','2001-03-26','2006-06-23','Genoveva Dooley','South','SD'),
 ('70','7','6','8','99','4207.44','9.99','4.00','i','A','1994-01-26','1991-02-12','1985-09-26','Mr. Robin Parisian I','New','TN'),
 ('0','6','1','9','99','497701.62','9.99','2.00','j','A','1977-04-22','2017-06-07','1992-06-11','Shanny Gleason','East','WY'),
 ('0','0','9','9','99','174231.10','0.00','4.00','k','M','1990-04-01','2003-01-31','1973-07-14','Cierra Bergnaum DDS','South','KS'),
