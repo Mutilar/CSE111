@@ -1,4 +1,4 @@
-CREATE DATABASE tpch;
+CREATE DATABASE TPCH;
 
 CREATE TABLE nation(
 	n_nationkey decimal(3,0) not null,
@@ -7,11 +7,123 @@ CREATE TABLE nation(
 	n_comment varchar(152)
 );
 
+INSERT INTO `nation` VALUES ('9','repudiandae','2','Dicta nihil provident sint natus facere voluptate dolore nihil.'),
+('7','qui','9','Explicabo laborum facere sequi.'),
+('5','alias','5','Quas a asperiores deleniti quis.'),
+('6','reprehenderit','6','Sequi reprehenderit aut accusamus sed consectetur beatae mollitia.'),
+('8','molestias','0','Eligendi itaque distinctio rerum.'),
+('8','sequi','0','Sit quae et omnis eius eos.'),
+('7','dolorem','7','Vero est non omnis ullam quia deleniti sint.'),
+('3','earum','5','Nemo dolor et dolorum velit praesentium soluta.'),
+('2','nihil','8','Iusto itaque in expedita.'),
+('8','et','0','Libero consequatur pariatur saepe.'),
+('1','velit','9','Aliquid qui similique dolorem dolorem.'),
+('1','quisquam','6','Ad modi at earum esse corrupti ipsam quos.'),
+('9','vitae','1','Neque unde suscipit incidunt aut.'),
+('6','aliquid','5','Similique vitae sed asperiores sit nihil sit.'),
+('1','sint','7','Est ad minus necessitatibus reprehenderit.'),
+('4','rerum','9','Animi est mollitia corrupti beatae nisi perspiciatis.'),
+('7','repellendus','8','Rem vel ipsam culpa accusantium ex.'),
+('2','debitis','6','Harum in quis saepe dolorem.'),
+('9','perferendis','5','Accusamus provident corrupti ex eveniet corrupti vel.'),
+('4','esse','7','Ut aspernatur reprehenderit velit natus et voluptatem aliquid.'),
+('5','voluptatibus','6','Aliquam exercitationem excepturi accusamus repellat.'),
+('1','alias','2','Totam consequatur optio et minus qui quo.'),
+('3','iusto','3','Eligendi consequatur reiciendis aperiam laborum quae ipsum.'),
+('9','sed','8','Temporibus voluptas aut voluptatem dolorum.'),
+('4','deleniti','0','Aut maiores quisquam non praesentium.'),
+('6','eligendi','9','Non repellat atque deserunt dolorem asperiores et quo voluptatibus.'),
+('0','tenetur','2','Deleniti repellendus et sapiente quod facere provident.'),
+('9','aut','5','Quia saepe qui facilis quo.'),
+('9','quod','1','Numquam aut eum adipisci blanditiis.'),
+('1','aut','1','Aut quibusdam necessitatibus consectetur.'),
+('1','eius','4','Iusto voluptatem rem quia voluptatibus.'),
+('0','repellendus','9','Aliquam suscipit ullam vitae asperiores tempore aut expedita.'),
+('7','et','0','In sit voluptatibus in nihil placeat soluta.'),
+('2','quia','1','Dicta ut voluptatem laboriosam.'),
+('8','iure','0','Eum quas omnis in placeat repudiandae perferendis molestiae.'),
+('0','modi','1','Dignissimos aperiam cumque reprehenderit et fuga qui corrupti ut.'),
+('5','impedit','3','Commodi quo non laborum commodi unde et.'),
+('8','qui','9','Et tempore dolorem dignissimos voluptas.'),
+('1','laboriosam','7','Aut repellendus et ad quod maiores consectetur quibusdam.'),
+('2','commodi','7','A dolore necessitatibus quam cumque et mollitia.'),
+('5','adipisci','4','Consequatur quis dicta amet quis laboriosam odit suscipit.'),
+('0','ducimus','1','Dolore necessitatibus quia corporis tempore.'),
+('1','omnis','8','Similique porro fugit est.'),
+('3','dolorum','7','Quo fuga ab cum deserunt.'),
+('9','dignissimos','0','Libero iste adipisci ipsa asperiores et exercitationem.'),
+('7','enim','2','Quo minus consequatur voluptatem quis fuga.'),
+('8','sit','1','Autem omnis et eum voluptatem nulla quae.'),
+('3','sit','8','Nihil quo deleniti enim cumque aut ut voluptate aut.'),
+('7','sed','9','Esse praesentium facilis ad voluptatum aut.'),
+('4','sunt','7','Culpa et tempore praesentium et.'),
+('6','vel','7','Consequatur perspiciatis quas quos optio perferendis sint.'),
+('9','illo','6','Ea aut consequatur velit ut et.'),
+('4','veniam','9','Commodi enim accusamus dolore quisquam quaerat.'),
+('8','repellendus','2','Vero consequatur aut distinctio ut debitis itaque consequatur.'),
+('0','ratione','6','Vitae quos voluptas occaecati maxime.'),
+('4','quas','2','Sit asperiores nulla aut ad laudantium tenetur sunt.'),
+('4','consectetur','3','Itaque nostrum ipsum aliquam laudantium dicta velit.'),
+('0','blanditiis','9','Omnis natus deserunt temporibus et.'),
+('4','magnam','8','Iure eaque ea optio facilis praesentium illo est.'),
+('9','est','6','Quasi animi voluptas perferendis eum dolores aut.'),
+('2','quis','9','Culpa similique commodi aut vel.'),
+('2','tempore','0','Placeat assumenda laboriosam ipsum molestiae.'),
+('4','eveniet','0','Tenetur odit in et ut tenetur quod minima.'),
+('9','vel','1','Blanditiis sapiente molestiae ut iure autem saepe ut labore.'),
+('9','quia','6','Quis aut error est fugiat libero.'),
+('7','aut','9','Non aut soluta sapiente ad.'),
+('2','ducimus','4','Voluptatem blanditiis debitis earum aut sed ut.'),
+('4','quidem','4','Perspiciatis sequi a aut facere odit excepturi non consequuntur.'),
+('5','et','4','Perspiciatis sequi voluptatibus ut voluptate fuga reiciendis sed.'),
+('3','dolorem','7','Commodi tenetur quisquam aut quaerat et aut.'),
+('2','vel','7','Nesciunt et aut veniam et perferendis odio maiores eius.'),
+('8','repudiandae','3','Eius illo ut quia ut.'),
+('9','impedit','2','Est atque neque odio non impedit qui.'),
+('4','praesentium','4','Eos eos quod officiis accusamus ut ipsa ea.'),
+('1','voluptatum','0','Autem explicabo quasi asperiores temporibus velit ipsam est.'),
+('8','sapiente','2','Molestias sapiente debitis ea voluptatem cum dignissimos.'),
+('0','et','4','Eos alias nemo nemo necessitatibus.'),
+('0','quis','8','Deleniti molestiae quis omnis temporibus est consequatur.'),
+('2','porro','9','Dolores aut dolor sed incidunt ut qui culpa.'),
+('8','dolorum','7','Placeat ea quibusdam quia eos eum rerum quisquam.'),
+('7','eveniet','4','Sit in ab dolore est ad.'),
+('1','laudantium','7','Quaerat est quia officiis ipsam quam sit doloribus.'),
+('9','voluptatem','4','Consectetur vel quos quis quod dolores aut.'),
+('4','enim','3','In aut blanditiis voluptatem et tenetur accusamus voluptate eum.'),
+('2','veritatis','4','Adipisci dolores libero et voluptas.'),
+('6','aut','7','Atque voluptatem velit natus magnam ut.'),
+('4','eius','4','Excepturi deserunt vero ipsa ad earum.'),
+('0','dolor','7','Omnis totam et ex ea ducimus.'),
+('2','similique','3','Ipsa deleniti earum earum delectus qui omnis sit.'),
+('3','quaerat','8','Illo quia velit odit iste repudiandae quo.'),
+('9','et','4','Et deleniti vel voluptatem voluptatem.'),
+('4','neque','7','Qui est odio possimus sed beatae ea minima.'),
+('1','asperiores','7','Corrupti animi soluta facere sint et et vel.'),
+('5','corrupti','6','Maiores labore autem ut vero pariatur earum.'),
+('6','nihil','7','Fugit tempore aut aut illum in.'),
+('2','non','0','Repudiandae quaerat dolores consectetur quisquam ab.'),
+('9','dolor','9','Ea qui dolore rem odit ipsam.'),
+('3','asperiores','0','Quo animi minima quia vitae perferendis laborum voluptatem.'),
+('0','accusamus','8','Modi atque architecto dicta vero aperiam.'),
+('8','fuga','6','Laborum officiis nostrum et et.'); 
+
 CREATE TABLE region(
 	r_regionkey decimal(2,0) not null,
 	r_name char(25) not null,
 	r_comment varchar(152)
 );
+
+INSERT INTO `region` VALUES ('9','saepe','Brooklyn'),
+('6','praesentium','Cecile'),
+('7','consequatur','Colin'),
+('9','enim','Prudence'),
+('7','eum','Jeremy'),
+('8','accusantium','Okey'),
+('4','aliquid','Lottie'),
+('9','excepturi','Marlee'),
+('1','vero','Vanessa'),
+('4','temporibus','Annetta'); 
 
 CREATE TABLE part(
 	p_partkey decimal(10,0) not null,
@@ -25,6 +137,17 @@ CREATE TABLE part(
 	p_comment varchar(23) not null
 );
 
+INSERT INTO `part` VALUES ('5','veritatis','Praesentium qui qui facer','adipisci','facere','99','1366 Horte','9999.99','corporis'),
+('6','facere','Sequi aliquid qui eos eum','pariatur','architecto','99','824 Medhur','52.19','hic'),
+('7','a','Aut incidunt nobis dignis','quae','ipsa','99','66998 Ambr','59.77','dolores'),
+('2','veritatis','Similique quia magni qui','et','rerum','99','269 Elton','9999.99','fugit'),
+('3','rerum','A molestias sequi molliti','cum','nulla','99','06503 Wuck','3474.00','corporis'),
+('4','et','Aut aut tempora ut incidu','commodi','molestias','99','82895 Kub','34.41','et'),
+('3','eveniet','Blanditiis est ipsum iure','cum','totam','0','71925 Stam','0.20','quia'),
+('2','aut','Suscipit qui cupiditate q','aut','quae','99','17860 Brow','0.00','quo'),
+('1','at','Perferendis et iste susci','sed','molestias','29','49376 Jayc','9999.99','necessitatibus'),
+('3','debitis','Qui excepturi id impedit','et','quod','99','7116 Cathe','9999.99','voluptatem'); 
+
 CREATE TABLE supplier (
 	s_suppkey decimal(8,0) not null,
 	s_name char(25) not null,
@@ -35,6 +158,17 @@ CREATE TABLE supplier (
 	s_comment varchar(101) not null
 );
 
+INSERT INTO `supplier` VALUES ('0','id','iste','1','(034)443-6942x1','3.00','Iste enim ut dolor unde non corporis.'),
+('6','quibusdam','quasi','3','1-656-323-1321','9.00','Magni a sapiente et libero maxime.'),
+('0','ipsum','ab','7','1-021-218-7488','7.00','Occaecati veniam reiciendis velit sapiente.'),
+('9','inventore','iure','6','(802)920-9553x1','5.00','Et hic hic reprehenderit at vitae.'),
+('4','beatae','voluptas','5','188-866-9714','9.00','Veritatis rerum recusandae deleniti at atque at quia ratione.'),
+('1','vero','accusamus','4','700.799.3863x40','6.00','Alias nihil placeat ex ex.'),
+('4','sunt','quis','8','276-041-8376x93','1.00','Laborum qui atque expedita ut fuga quia eveniet.'),
+('2','dolores','commodi','2','+77(8)315342965','5.00','Quia inventore voluptate voluptas ab.'),
+('2','iure','sit','7','+25(8)800435695','3.00','Harum non assumenda quod error corporis ea.'),
+('8','facere','omnis','2','(514)786-8060','1.00','Omnis officiis dolorem inventore magni laborum quibusdam facere.'); 
+
 CREATE TABLE partsupp(
 	ps_partkey decimal(10,0) not null,
 	ps_suppkey decimal(8,0) not null,
@@ -42,6 +176,17 @@ CREATE TABLE partsupp(
 	ps_supplycost decimal(6,2) not null,
 	ps_comment varchar(199) not null
 );
+
+INSERT INTO `partsupp` VALUES ('2','4','9065','13.30','Aliquid et maiores nemo iste.'),
+('9','7','21530','9999.99','At et aut cumque explicabo enim nostrum.'),
+('0','0','1745','30.41','Inventore quod enim voluptatum id eum necessitatibus voluptates a.'),
+('9','7','99999','9999.99','Voluptates dolor mollitia eos quia praesentium.'),
+('8','4','99999','9999.99','Quo quaerat deleniti suscipit delectus eaque est ea.'),
+('2','2','21623','245.94','Corporis aut at natus voluptatem expedita consequatur repudiandae.'),
+('7','7','764','9999.99','Labore nostrum incidunt tempore labore.'),
+('2','9','0','9999.99','Magnam at enim reprehenderit non.'),
+('7','2','538','9999.99','Reiciendis sit nemo quibusdam molestiae eum commodi aut.'),
+('9','8','99999','0.82','Voluptatem sequi porro itaque nam dolorum earum aut.'); 
 
 CREATE TABLE customer(
 	c_custkey decimal(9,0) not null,
@@ -54,6 +199,17 @@ CREATE TABLE customer(
 	c_comment varchar(117) not null
 );
 
+INSERT INTO `customer` VALUES ('2','aut','Apt. 486','2','(745)205-6670x1','3.00','quam','natus'),
+('3','doloribus','Suite 840','0','1-905-463-1987x','0.00','delectus','corrupti'),
+('0','et','Suite 818','9','020-994-5561','3.00','animi','vitae'),
+('6','excepturi','Suite 685','1','672-565-0131','1.00','perspiciat','ut'),
+('6','eaque','Apt. 401','0','+54(1)645344885','5.00','est','quasi'),
+('6','aut','Apt. 067','6','590-776-9054x32','6.00','quia','aliquam'),
+('1','accusamus','Apt. 653','6','1-607-656-3869x','1.00','deleniti','non'),
+('4','debitis','Apt. 369','6','893.629.8185x40','4.00','tenetur','eveniet'),
+('0','ullam','Apt. 426','6','478-127-1348x69','3.00','libero','nihil'),
+('9','accusantium','Apt. 448','4','(447)013-1206','0.00','assumenda','reiciendis'); 
+
 CREATE TABLE orders(
 	o_orderkey decimal(12,0) not null,
 	o_custkey decimal(9,0) not null,
@@ -65,6 +221,17 @@ CREATE TABLE orders(
 	o_shippriority decimal(1,0) not null,
 	o_comment varchar(79) not null
 );
+
+INSERT INTO `orders` VALUES ('0','5','U','0.00','1970-11-04','Ms.','Cole, Padberg a','9','Prof.'),
+('27860','7','A','2.66','1980-08-21','Mr.','Cruickshank, La','8','Prof.'),
+('4148','4','L','1013.48','2011-07-06','Mr.','Gaylord, Rogahn','4','Dr.'),
+('28437','9','D','8.70','1975-06-27','Prof.','Reynolds Ltd','1','Ms.'),
+('0','0','E','999999.99','1970-09-08','Dr.','Koch PLC','9','Dr.'),
+('0','3','V','285.03','2018-05-12','Dr.','Emard, Fritsch','0','Mrs.'),
+('277562','2','A','999999.99','1985-06-23','Dr.','Stamm-Konopelsk','0','Prof.'),
+('23','4','O','22.72','2000-12-22','Prof.','Cummings-Frami','5','Ms.'),
+('975','7','A','66.34','2015-11-24','Dr.','Towne-Parisian','7','Miss'),
+('356','7','I','0.00','1971-11-07','Prof.','Jerde LLC','5','Prof.'); 
 
 CREATE TABLE lineitem(
 	l_orderkey decimal(12,0) not null,
@@ -84,3 +251,14 @@ CREATE TABLE lineitem(
 	l_shipmode char(10) not null,
 	l_comment varchar(44) not null
 );
+
+INSERT INTO `lineitem` VALUES ('9','7','7','9','99','999999.99','9.99','7.00','v','C','1991-02-15','2001-03-26','2006-06-23','Genoveva Dooley','South','SD'),
+('70','7','6','8','99','4207.44','9.99','4.00','i','A','1994-01-26','1991-02-12','1985-09-26','Mr. Robin Parisian I','New','TN'),
+('0','6','1','9','99','497701.62','9.99','2.00','j','A','1977-04-22','2017-06-07','1992-06-11','Shanny Gleason','East','WY'),
+('0','0','9','9','99','174231.10','0.00','4.00','k','M','1990-04-01','2003-01-31','1973-07-14','Cierra Bergnaum DDS','South','KS'),
+('3','8','1','9','99','999999.99','9.99','5.00','w','D','1999-04-20','2016-06-21','1970-06-29','Reyna Orn MD','New','LA'),
+('206','3','0','9','1','0.00','9.99','3.00','v','D','1972-02-02','1971-12-02','2005-12-27','Prof. Isom Schmitt III','West','NH'),
+('0','9','0','9','99','16.00','9.99','6.00','u','N','2000-03-19','1988-04-20','2003-05-13','Earlene Kling II','Lake','VT'),
+('830','7','9','2','99','999999.99','0.00','5.00','q','S','2015-11-19','2012-05-01','2014-06-24','Dr. Tanya Kerluke PhD','New','NV'),
+('950487697','0','0','9','99','999999.99','6.00','6.00','j','R','1975-10-09','2005-03-20','2011-02-24','Dr. Laverne Pagac','New','NH'),
+('7402','2','6','9','99','21087.52','9.99','7.00','x','E','2011-08-07','1983-08-08','2017-06-04','Mr. Erick Kreiger','Lake','NC'); 
