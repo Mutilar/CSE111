@@ -8,5 +8,4 @@ WHERE n_nationkey IN (
         FROM orders
         WHERE YEAR(o_orderdate) = 1996 and MONTH(o_orderdate) = 12
 	)
-);
-	
+)

@@ -8,4 +8,4 @@ WHERE s_nationkey IN (
         FROM region
         WHERE r_name = 'ASIA'
     )
-) AND s_acctbal >= 1000;
+) AND s_acctbal >= 1000
