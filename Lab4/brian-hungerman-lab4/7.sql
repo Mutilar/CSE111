@@ -1,4 +1,4 @@
-SELECT c_name, (SELECT n_name FROM nation WHERE n_nationkey = c_nationkey) country, o_orderstatus, COUNT(*)
+SELECT (SELECT n_name FROM nation WHERE n_nationkey = c_nationkey) country, o_orderstatus, COUNT(*)
 FROM customer
 INNER JOIN (
 	SELECT o_custkey, o_orderstatus

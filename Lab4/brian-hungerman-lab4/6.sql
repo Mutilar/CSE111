@@ -1,4 +1,3 @@
-
 SELECT p_mfgr, o_orderpriority, COUNT(*)
 FROM part
 INNER JOIN (
