@@ -16,6 +16,6 @@ INNER JOIN (
 INNER JOIN (
 	SELECT o_orderkey
 	FROM orders
-	WHERE o_orderstatus = 'F' AND YEAR(o_orderdate) = 1995
+	WHERE o_orderstatus = 'F' AND strftime('%Y', o_orderdate) = '1995'
 ) l ON o_orderkey = l_orderkey
 GROUP BY n_name

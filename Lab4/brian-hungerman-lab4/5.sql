@@ -9,7 +9,7 @@ INNER JOIN (
 		WHERE n_name = 'GERMANY'
 	)
 ) c ON o_custkey = c_custkey
-WHERE YEAR(o_orderdate) = 1995
+WHERE strftime('%Y', o_orderdate) = '1995'
 GROUP BY c_name
 
 
