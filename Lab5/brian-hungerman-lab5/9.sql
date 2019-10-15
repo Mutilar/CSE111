@@ -1,4 +1,3 @@
-
 SELECT COUNT(*)
 FROM (
 	SELECT (ps_supplycost * ps_availqty) val, ps_suppkey
