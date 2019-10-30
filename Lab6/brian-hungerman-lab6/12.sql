@@ -20,5 +20,5 @@ HAVING SUM(o_totalprice) = (
             FROM customer
         ) c ON o_custkey = c_custkey
         GROUP BY c_nationkey
-    )
+    ) x
 )

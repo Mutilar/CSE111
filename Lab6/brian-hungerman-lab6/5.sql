@@ -10,4 +10,4 @@ FROM (
 			FROM part
 		)
 	) p ON p_partkey = ps_partkey
-)
+) x

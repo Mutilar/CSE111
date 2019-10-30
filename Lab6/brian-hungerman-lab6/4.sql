@@ -9,4 +9,4 @@ FROM (
     ) s ON ps_suppkey = s_suppkey
     GROUP BY ps_suppkey
     HAVING COUNT(*) >= 4
-)
+) x
