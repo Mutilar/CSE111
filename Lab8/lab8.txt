@@ -1,0 +1,435 @@
+After executing all the SQL queries, some trends stand out to suggest by indexes are valuable tools in SQL.
+
+Creating indices added very little upfront cost. However, inserting data into the _index tables did take slightly longer
+than for the _noindex tables. So writing data is slower in indexed tables. However, on average, the read speed from a table
+with an index was slightly after, from between 0% to 33% faster. It seems these benefits are only significant when the queries 
+took longer than 200ms on average.
+
+-- Orders index versus noindex, took almost the same time
+Result: query executed successfully. Took 93ms, 15000 rows affected
+At line 1:
+INSERT INTO orders_index
+SELECT * FROM orders
+Result: query executed successfully. Took 99ms, 15000 rows affected
+At line 1:
+INSERT INTO orders_noindex
+SELECT * FROM orders
+
+-- Customer index versus noindex, took almost the same time
+Result: query executed successfully. Took 9ms, 1500 rows affected
+At line 1:
+INSERT INTO customer_index
+SELECT * FROM customer
+Result: query executed successfully. Took 8ms, 1500 rows affected
+At line 1:
+INSERT INTO customer_noindex
+SELECT * FROM customer
+
+-- Lineitem index versus noindex, took slightly longer for the index table
+Result: query executed successfully. Took 592ms, 60175 rows affected
+At line 1:
+INSERT INTO lineitem_index
+SELECT * FROM lineitem
+Result: query executed successfully. Took 471ms, 60175 rows affected
+At line 1:
+INSERT INTO lineitem_noindex
+SELECT * FROM lineitem
+
+-- Supplier index versus noindex, took almost the same time
+Result: query executed successfully. Took 2ms, 100 rows affected
+At line 1:
+INSERT INTO supplier_index
+SELECT * FROM supplier
+Result: query executed successfully. Took 3ms, 100 rows affected
+At line 1:
+INSERT INTO supplier_noindex
+SELECT * FROM supplier
+
+-- Lab3 #1 took the same time 
+Result: 1 rows returned in 4ms
+At line 1:
+SELECT c_address, c_phone 
+FROM customer_index
+WHERE c_name = 'Customer#000000227'
+Result: 1 rows returned in 4ms
+At line 1:
+SELECT c_address, c_phone 
+FROM customer_noindex
+WHERE c_name = 'Customer#000000227'
+
+-- Lab3 #2 took slightly less time on the indexed table
+Result: 1 rows returned in 4ms
+At line 1:
+SELECT s_name, s_acctbal
+FROM supplier_index
+WHERE s_acctbal = (SELECT min(s_acctbal) FROM supplier_index)
+Result: 1 rows returned in 6ms
+At line 1:
+SELECT s_name, s_acctbal
+FROM supplier_noindex
+WHERE s_acctbal = (SELECT min(s_acctbal) FROM supplier_noindex)
+
+-- Lab3 #3 took slightly less time on the indexed table
+Result: 26 rows returned in 67ms
+At line 1:
+SELECT l_quantity, l_extendedprice
+FROM lineitem_index
+WHERE l_returnflag = 'N' AND l_shipdate = '1995-09-25'
+Result: 26 rows returned in 87ms
+At line 1:
+SELECT l_quantity, l_extendedprice
+FROM lineitem_noindex
+WHERE l_returnflag = 'N' AND l_shipdate = '1995-09-25'
+
+--Lab3 #4 took almost the same time for indexed and non-indexed
+Result: 1 rows returned in 239ms
+At line 1:
+SELECT MAX(julianday(l_shipdate) - julianday(l_commitdate))
+FROM lineitem_index
+Result: 1 rows returned in 235ms
+At line 1:
+SELECT MAX(julianday(l_shipdate) - julianday(l_commitdate))
+FROM lineitem_noindex
+
+--Lab3 #5 took almost the same time
+Result: 1 rows returned in 11ms
+At line 1:
+SELECT MIN(c_acctbal), MAX(c_acctbal)
+FROM customer_index
+WHERE c_mktsegment = 'BUILDING'
+Result: 1 rows returned in 12ms
+At line 1:
+SELECT MIN(c_acctbal), MAX(c_acctbal)
+FROM customer_noindex
+WHERE c_mktsegment = 'BUILDING'
+
+--Lab3 #6 took less time on the indexed table
+Result: 25 rows returned in 78ms
+At line 1:
+SELECT n_name
+FROM nation
+WHERE n_nationkey IN (
+	SELECT DISTINCT c_nationkey
+	FROM customer_index
+	WHERE c_custkey IN (
+		SELECT o_custkey
+        FROM orders_index
+        WHERE strftime('%Y', o_orderdate) = '1996' and strftime('%m', o_orderdate) = '12'
+	)
+)
+Result: 25 rows returned in 94ms
+At line 1:
+SELECT n_name
+FROM nation
+WHERE n_nationkey IN (
+	SELECT DISTINCT c_nationkey
+	FROM customer_noindex
+	WHERE c_custkey IN (
+		SELECT o_custkey
+        FROM orders_noindex
+        WHERE strftime('%Y', o_orderdate) = '1996' and strftime('%m', o_orderdate) = '12'
+	)
+)
+
+--Lab3 #7 took around 30% less time on the indexed table
+Result: 52 rows returned in 25ms
+At line 1:
+SELECT l_receiptdate, COUNT(*)
+FROM lineitem_index
+WHERE l_orderkey IN (
+	SELECT o_orderkey
+    FROM orders_index
+    WHERE o_custkey = (
+		SELECT c_custkey
+        FROM customer_index
+        WHERE c_name = 'Customer#000000118'
+	)
+)
+GROUP BY l_receiptdate
+Result: 52 rows returned in 35ms
+At line 1:
+SELECT l_receiptdate, COUNT(*)
+FROM lineitem_noindex
+WHERE l_orderkey IN (
+	SELECT o_orderkey
+    FROM orders_noindex
+    WHERE o_custkey = (
+		SELECT c_custkey
+        FROM customer_noindex
+        WHERE c_name = 'Customer#000000118'
+	)
+)
+GROUP BY l_receiptdate
+
+--Lab3 #8 took a little longer on the indexed table
+Result: 21 rows returned in 7ms
+At line 1:
+SELECT s_name, s_acctbal
+FROM supplier_index
+WHERE s_nationkey IN (
+	SELECT n_nationkey
+    FROM nation
+    WHERE n_regionkey = (
+		SELECT r_regionkey
+        FROM region
+        WHERE r_name = 'ASIA'
+    )
+) AND s_acctbal >= 1000
+Result: 21 rows returned in 6ms
+At line 1:
+SELECT s_name, s_acctbal
+FROM supplier_noindex
+WHERE s_nationkey IN (
+	SELECT n_nationkey
+    FROM nation
+    WHERE n_regionkey = (
+		SELECT r_regionkey
+        FROM region
+        WHERE r_name = 'ASIA'
+    )
+) AND s_acctbal >= 1000
+
+--Lab3 #9 took almost the same amount of time
+Result: 11 rows returned in 13ms
+At line 1:
+SELECT (SELECT n_name FROM nation WHERE n_nationkey = s_nationkey) AS country, COUNT(*), AVG(s_acctbal)
+FROM supplier_index
+GROUP BY s_nationkey
+HAVING COUNT(*) >= 5
+Result: 11 rows returned in 10ms
+At line 1:
+SELECT (SELECT n_name FROM nation WHERE n_nationkey = s_nationkey) AS country, COUNT(*), AVG(s_acctbal)
+FROM supplier_noindex
+GROUP BY s_nationkey
+HAVING COUNT(*) >= 5
+
+--Lab3 #10 took slightly longer on the non-indexed table
+Result: 1 rows returned in 51ms
+At line 1:
+SELECT SUM(o_totalprice)
+FROM orders_index
+WHERE 
+	o_custkey IN (
+		SELECT c_custkey
+        FROM customer_index
+        WHERE c_nationkey IN (
+			SELECT n_nationkey
+            FROM nation
+            WHERE n_regionkey = (
+				SELECT r_regionkey
+                FROM region
+                WHERE r_name = 'EUROPE'
+			)
+        )
+    )
+AND strftime("%Y", o_orderdate) = '1996'
+Result: 1 rows returned in 58ms
+At line 1:
+SELECT SUM(o_totalprice)
+FROM orders_noindex
+WHERE 
+	o_custkey IN (
+		SELECT c_custkey
+        FROM customer_noindex
+        WHERE c_nationkey IN (
+			SELECT n_nationkey
+            FROM nation
+            WHERE n_regionkey = (
+				SELECT r_regionkey
+                FROM region
+                WHERE r_name = 'EUROPE'
+			)
+        )
+    )
+AND strftime("%Y", o_orderdate) = '1996'
+
+--Lab3 #11 took longer on the indexed table?
+Result: 1 rows returned in 649ms
+At line 1:
+SELECT COUNT(*)
+FROM (
+	SELECT DISTINCT o_custkey
+    FROM orders_index
+    WHERE o_orderkey IN (
+		SELECT l_orderkey
+		FROM lineitem_index
+		WHERE l_discount >= .04
+    )
+) cust
+Result: 1 rows returned in 245ms
+At line 1:
+SELECT COUNT(*)
+FROM (
+	SELECT DISTINCT o_custkey
+    FROM orders_noindex
+    WHERE o_orderkey IN (
+		SELECT l_orderkey
+		FROM lineitem_noindex
+		WHERE l_discount >= .04
+    )
+) cust
+
+--Lab3 #12 took slightly less time on the indexed table
+Result: 5 rows returned in 84ms
+At line 1:
+SELECT r_name, n.sumvals
+FROM region
+INNER JOIN (
+	SELECT n_regionkey, SUM(c.vals) sumvals
+	FROM nation
+	INNER JOIN (
+		SELECT c_nationkey, COUNT(*) vals
+		FROM customer_index
+		INNER JOIN (
+			SELECT o_custkey
+            FROM orders_index
+            WHERE o_orderstatus = 'F'
+		) o ON o_custkey = c_custkey 
+		GROUP BY c_nationkey
+	) c ON c_nationkey = n_nationkey
+	GROUP BY n_regionkey
+) n ON r_regionkey = n_regionkey
+ORDER BY sumvals DESC
+Result: 5 rows returned in 91ms
+At line 1:
+SELECT r_name, n.sumvals
+FROM region
+INNER JOIN (
+	SELECT n_regionkey, SUM(c.vals) sumvals
+	FROM nation
+	INNER JOIN (
+		SELECT c_nationkey, COUNT(*) vals
+		FROM customer_noindex
+		INNER JOIN (
+			SELECT o_custkey
+            FROM orders_noindex
+            WHERE o_orderstatus = 'F'
+		) o ON o_custkey = c_custkey 
+		GROUP BY c_nationkey
+	) c ON c_nationkey = n_nationkey
+	GROUP BY n_regionkey
+) n ON r_regionkey = n_regionkey
+ORDER BY sumvals DESC
+
+--Lab3 #13 took slightly less time on the indexed table
+Result: 1 rows returned in 7ms
+At line 1:
+SELECT AVG(c_acctbal)
+FROM customer_index
+WHERE (
+	c_nationkey IN (
+		SELECT n_nationkey
+        FROM nation
+        WHERE n_regionkey = (
+			SELECT r_regionkey
+            FROM region
+            WHERE r_name = 'EUROPE'
+		)
+	)
+	AND c_mktsegment = 'MACHINERY'
+)
+Result: 1 rows returned in 9ms
+At line 1:
+SELECT AVG(c_acctbal)
+FROM customer_noindex
+WHERE (
+	c_nationkey IN (
+		SELECT n_nationkey
+        FROM nation
+        WHERE n_regionkey = (
+			SELECT r_regionkey
+            FROM region
+            WHERE r_name = 'EUROPE'
+		)
+	)
+	AND c_mktsegment = 'MACHINERY'
+)
+--Lab3 #14 took less time on the indexed table
+Result: 1 rows returned in 25ms
+At line 1:
+SELECT COUNT(*)
+FROM orders_index
+WHERE o_orderpriority = '1-URGENT'
+AND o_custkey IN (
+	SELECT c_custkey 
+    FROM customer_index
+    WHERE c_nationkey = (
+		SELECT n_nationkey
+        FROM nation
+        WHERE n_name = 'Brazil'
+    )
+) and strftime('%Y', o_orderdate) >= '1994' AND strftime('%Y', o_orderdate) <= '1997'
+Result: 1 rows returned in 33ms
+At line 1:
+SELECT COUNT(*)
+FROM orders_noindex
+WHERE o_orderpriority = '1-URGENT'
+AND o_custkey IN (
+	SELECT c_custkey 
+    FROM customer_noindex
+    WHERE c_nationkey = (
+		SELECT n_nationkey
+        FROM nation
+        WHERE n_name = 'Brazil'
+    )
+) and strftime('%Y', o_orderdate) >= '1994' AND strftime('%Y', o_orderdate) <= '1997'
+
+--Lab3 #15 took less time on the indexed table
+Result: 175 rows returned in 216ms
+At line 1:
+SELECT n_name, s.yearordered, COUNT(*)
+FROM nation
+INNER JOIN (
+	SELECT s_nationkey, l.yearordered
+	FROM supplier_index
+	INNER JOIN (
+		SELECT l_suppkey, o.yearordered
+		FROM lineitem_index
+		INNER JOIN (
+			SELECT o_orderkey, strftime('%Y', o_orderdate) yearordered
+			FROM orders_index
+			WHERE o_orderpriority = '3-MEDIUM'
+			GROUP BY o_orderkey
+		) o ON l_orderkey = o_orderkey
+	) l ON s_suppkey = l_suppkey
+) s ON n_nationkey = s_nationkey
+GROUP BY n_name, s.yearordered
+Result: 175 rows returned in 244ms
+At line 1:
+SELECT n_name, s.yearordered, COUNT(*)
+FROM nation
+INNER JOIN (
+	SELECT s_nationkey, l.yearordered
+	FROM supplier_noindex
+	INNER JOIN (
+		SELECT l_suppkey, o.yearordered
+		FROM lineitem_noindex
+		INNER JOIN (
+			SELECT o_orderkey, strftime('%Y', o_orderdate) yearordered
+			FROM orders_noindex
+			WHERE o_orderpriority = '3-MEDIUM'
+			GROUP BY o_orderkey
+		) o ON l_orderkey = o_orderkey
+	) l ON s_suppkey = l_suppkey
+) s ON n_nationkey = s_nationkey
+GROUP BY n_name, s.yearordered
+
+-- UPDATE lineitem index versus noindex
+Result: query executed successfully. Took 481ms, 60175 rows affected
+At line 1:
+UPDATE lineitem_index
+SET l_discount = L_DISCOUNT + .05
+Result: query executed successfully. Took 170ms, 60175 rows affected
+At line 1:
+UPDATE lineitem_noindex
+SET l_discount = L_DISCOUNT + .05
+
+-- UPDATE supplier index versus noindex
+Result: query executed successfully. Took 0ms, 100 rows affected
+At line 1:
+UPDATE supplier_index
+SET s_acctbal = s_acctbal + 1000
+Result: query executed successfully. Took 0ms, 100 rows affected
+At line 1:
+UPDATE supplier_noindex
+SET s_acctbal = s_acctbal + 1000
